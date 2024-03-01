@@ -3,6 +3,7 @@ import useGenres, { genres }  from "../hooks/useGenres"
 import { getCroppedImageUrl } from "../services/image-url"
 import GenreListSkeleton from "./GenreListSkeleton"
 
+
 interface Props{
   onselectGenre :(genre:genres) =>void
   selectedgenre:genres|null
@@ -17,7 +18,7 @@ const GenreList = ({onselectGenre,selectedgenre}:Props) => {
     <Heading fontSize={"2xl"} marginBottom={5}>Genres</Heading>
     <List>
         {isLoading && genres.map(genre => <GenreListSkeleton key={genre}/>)}
-    {data.map(genre =>
+    {data.map((genre) =>
     <ListItem paddingY={2} key={genre.id}>
         <HStack >
         <Image objectFit={"cover"} src={getCroppedImageUrl(genre.image_background)}
